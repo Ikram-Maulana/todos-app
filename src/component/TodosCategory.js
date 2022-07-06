@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import TodosList from "./TodosList";
 
 const TodosCategory = ({
@@ -36,4 +36,4 @@ const TodosCategory = ({
   );
 };
 
-export default TodosCategory;
+export default memo(TodosCategory);

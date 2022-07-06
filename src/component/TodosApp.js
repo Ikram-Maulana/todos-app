@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import FooterApp from "./FooterApp";
 import FormInput from "./FormInput";
 import NavApp from "./NavApp";
@@ -149,4 +149,4 @@ const TodosApp = () => {
   );
 };
 
-export default TodosApp;
+export default memo(TodosApp);

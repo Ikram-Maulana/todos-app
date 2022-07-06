@@ -1,5 +1,5 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import FormMessage from "./FormMessage";
 
 const FormInput = ({
@@ -33,7 +33,7 @@ const FormInput = ({
 
   return (
     <div className="w-[300px] mx-auto mb-4 md:mb-6 md:w-[500px]">
-      <form onSubmit={onSubmitForm} className="flex flex-col gap-4">
+      <form onSubmit={onSubmitForm} className="flex flex-col gap-4" netlify>
         <div>
           <div className="mb-2 flex justify-between">
             <Label htmlFor="activity1" value="Nama Aktifitas" />
@@ -69,4 +69,4 @@ const FormInput = ({
   );
 };
 
-export default FormInput;
+export default memo(FormInput);

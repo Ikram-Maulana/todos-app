@@ -1,5 +1,5 @@
 import { Button, Label } from "flowbite-react";
-import React from "react";
+import React, { memo } from "react";
 
 const TodosItem = ({
   todo,
@@ -44,4 +44,4 @@ const TodosItem = ({
   );
 };
 
-export default TodosItem;
+export default memo(TodosItem);

@@ -9,10 +9,10 @@ const NavApp = ({ onSearch }) => {
         <img
           src="/reminders192.png"
           className="mr-3 h-6 sm:h-9"
-          alt="Todo Logo"
+          alt="Todos Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          I-Todo
+          I-Todos
         </span>
       </Navbar.Brand>
       <div className="md:hidden">
