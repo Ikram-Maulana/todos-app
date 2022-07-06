@@ -1,36 +1,16 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import FormMessage from "./FormMessage";
 
 const FormInput = ({
   onSubmitForm,
   activity,
-  setActivity,
   message,
   edit,
+  charRemaining,
   onCancelEdit,
+  onActivityChange,
 }) => {
-  const [charLimit] = useState(12);
-  const [charRemaining, setCharRemaining] = useState(12);
-
-  const charLimiter = (value, max) => {
-    if (value.length > max) {
-      value = value.substr(0, max);
-    }
-    let remaining = max - value.length;
-
-    return {
-      value,
-      remaining,
-    };
-  };
-
-  const onActivityChangeHandler = (e) => {
-    const { value, remaining } = charLimiter(e.target.value, charLimit);
-    setActivity(value);
-    setCharRemaining(remaining);
-  };
-
   return (
     <div className="w-[300px] mx-auto mb-4 md:mb-6 md:w-[500px]">
       <form onSubmit={onSubmitForm} className="flex flex-col gap-4">
@@ -47,7 +27,7 @@ const FormInput = ({
             type="text"
             placeholder="Masukkan nama aktifitas anda..."
             value={activity}
-            onChange={onActivityChangeHandler}
+            onChange={onActivityChange}
           />
           {message && <FormMessage>{message}</FormMessage>}
         </div>

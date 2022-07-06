@@ -11,6 +11,8 @@ const TodosApp = () => {
   const [todos, setTodos] = useState(getInitialData());
   const [message, setMessage] = useState("");
   const [keyword, setKeyword] = useState("");
+  const [charLimit, setCharLimit] = useState(12);
+  const [charRemaining, setCharRemaining] = useState(12);
 
   const generateId = () => {
     return Date.now();
@@ -38,6 +40,8 @@ const TodosApp = () => {
       // Menyimpan todo yang baru
       setTodos(updatedTodos);
       message && setMessage("");
+      setCharLimit(12);
+      setCharRemaining(12);
       return onCancelEditHandler();
     }
 
@@ -50,6 +54,8 @@ const TodosApp = () => {
       },
     ]);
     message && setMessage("");
+    setCharLimit(12);
+    setCharRemaining(12);
     setActivity("");
   };
 
@@ -57,6 +63,8 @@ const TodosApp = () => {
     const filteredTodos = todos.filter((todo) => todo.id !== id);
 
     setTodos(filteredTodos);
+    setCharLimit(12);
+    setCharRemaining(12);
     edit.id && onCancelEditHandler();
   };
 
@@ -69,6 +77,8 @@ const TodosApp = () => {
     console.log("cancel edit");
     setEdit([]);
     setActivity("");
+    setCharLimit(12);
+    setCharRemaining(12);
   };
 
   const onDoneActivityHandler = (todo) => {
@@ -95,6 +105,24 @@ const TodosApp = () => {
     setKeyword(keyword);
   };
 
+  const charLimiter = (value, max) => {
+    if (value.length > max) {
+      value = value.substr(0, max);
+    }
+    let remaining = max - value.length;
+
+    return {
+      value,
+      remaining,
+    };
+  };
+
+  const onActivityChangeHandler = (e) => {
+    const { value, remaining } = charLimiter(e.target.value, charLimit);
+    setActivity(value);
+    setCharRemaining(remaining);
+  };
+
   return (
     <div className="font-serif text-slate-700 dark:text-slate-200 dark:bg-[#1F2937]">
       <header>
@@ -109,10 +137,11 @@ const TodosApp = () => {
         <FormInput
           onSubmitForm={onSubmitFormHandler}
           activity={activity}
-          setActivity={setActivity}
           message={message}
           edit={edit}
+          charRemaining={charRemaining}
           onCancelEdit={onCancelEditHandler}
+          onActivityChange={onActivityChangeHandler}
         />
 
         <div className="w-[300px] mx-auto md:w-[1000px]">
