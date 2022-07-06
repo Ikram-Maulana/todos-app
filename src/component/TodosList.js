@@ -12,8 +12,12 @@ const TodosList = ({
 }) => {
   if (todos.length > 0) {
     todos = todos.filter((todo) => {
-      if (keyword === "") return todo;
-      return todo.activity.toLowerCase().includes(keyword.toLowerCase());
+      if (keyword === undefined) {
+        return todo;
+      }
+      const activityTodo = todo.activity;
+      const keywordSearch = keyword;
+      return activityTodo.toLowerCase().includes(keywordSearch.toLowerCase());
     });
   }
 

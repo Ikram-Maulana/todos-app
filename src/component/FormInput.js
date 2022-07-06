@@ -33,7 +33,7 @@ const FormInput = ({
 
   return (
     <div className="w-[300px] mx-auto mb-4 md:mb-6 md:w-[500px]">
-      <form onSubmit={onSubmitForm} className="flex flex-col gap-4" netlify>
+      <form onSubmit={onSubmitForm} className="flex flex-col gap-4">
         <div>
           <div className="mb-2 flex justify-between">
             <Label htmlFor="activity1" value="Nama Aktifitas" />
